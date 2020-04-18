@@ -10,7 +10,7 @@ module.exports= (sequelize, DataTypes) => {
     hooks: {
       beforeSave: async user => {
         if(user.password) {
-          user.password_hash = bcrypt.hash(user.password, 16);
+          user.password_hash = await bcrypt.hash(user.password, 16);
         }
       }
     }
