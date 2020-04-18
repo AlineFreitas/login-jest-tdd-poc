@@ -17,5 +17,8 @@
   "devDependencies": {
     "jest": "^25.3.0",
     "sequelize-cli": "^5.5.1"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
