@@ -150,4 +150,4 @@ temp/
 # End of https://www.gitignore.io/api/node,macos,visualstudiocode
 
 ### Sqlite3
-127.0.0.1
+__tests__/test.sqlite
