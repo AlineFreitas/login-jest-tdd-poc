@@ -1,8 +1,7 @@
 const router = require('express').Router();
 
 router.post('/', (request, response) => {
-  console.log(request.data);
-  return response.status(200);
+  return response.status(200).send();
 });
 
 module.exports = router;
