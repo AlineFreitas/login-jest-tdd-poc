@@ -1,0 +1,12 @@
+{
+  "name": "login-jest-tdd",
+  "version": "1.0.0",
+  "description": "POC para desenvolvimento TDD utilizando jest",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/AlineFreitas/login-jest-tdd-poc",
+    "type": "git"
+  },
+  "author": "Aline Freitas",
+  "license": "MIT"
+}
