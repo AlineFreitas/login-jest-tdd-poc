@@ -38,4 +38,15 @@ describe('Authorization', () => {
 
       expect(response.status).toBe(401);
   });
+
+  it('returns 404 if no user is found with given credentials', async() => {
+    const response = await request(app)
+      .post('/signin')
+      .send({
+        email: 'non-existent@email.com',
+        password: 'password'
+      });
+
+      expect(response.status).toBe(404);
+  });
 });
