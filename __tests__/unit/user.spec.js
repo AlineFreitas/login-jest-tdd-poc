@@ -15,7 +15,7 @@ describe('User', () => {
       password: '1234567'
     };
 
-    const user = User.create(userObject);
+    const user = await User.create(userObject);
 
     const compare = await bcrypt.compare(userObject.password, user.password_hash);
     expect(compare).toBe(true);
