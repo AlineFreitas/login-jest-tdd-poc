@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
-router.post('/', (request, response) => {
-  return response.status(200).send();
-});
+const sessionsController = require('../app/controllers/SessionsController');
+
+router.post('/', sessionsController.signin);
 
 module.exports = router;
