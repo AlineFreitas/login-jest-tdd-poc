@@ -28,6 +28,17 @@ describe('Authorization', () => {
   
       expect(response.status).toBe(200);
     });
+
+    it('returns jwt token when sucessfully authenticated', async() => {
+      const response = await request(app)
+      .post('/signin')
+      .send({
+        email: userObject.email,
+        password: userObject.password
+      });
+
+      expect(response.body).toHaveProperty('token');
+    });
   });
 
   describe('', () => {
