@@ -27,4 +27,15 @@ describe('Authorization', () => {
 
     expect(response.status).toBe(200);
   });
+
+  it('doesn\'t authenticate with invalid credentials', async() => {
+    const response = await request(app)
+      .post('/signin')
+      .send({
+        email: userObject.email,
+        password: '123123'
+      });
+
+      expect(response.status).toBe(401);
+  });
 });
