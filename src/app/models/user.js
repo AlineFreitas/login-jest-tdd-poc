@@ -16,5 +16,9 @@ module.exports= (sequelize, DataTypes) => {
     }
   });
 
+  User.prototype.confirmPassword = function(password) {
+    return bcrypt.compare(password, this.password_hash);
+  };
+
   return User;
 }
