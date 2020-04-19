@@ -16,37 +16,41 @@ describe('Authorization', () => {
     await truncate();
     user = await User.create(userObject);
   });
-  
-  it('authenticates with valid credentials', async() => {
-    const response = await request(app)
-    .post('/signin')
-    .send({
-      email: userObject.email,
-      password: userObject.password
-    });
+  describe('On success', () =>{
 
-    expect(response.status).toBe(200);
-  });
-
-  it('doesn\'t authenticate with invalid credentials', async() => {
-    const response = await request(app)
+    it('authenticates with valid credentials', async() => {
+      const response = await request(app)
       .post('/signin')
       .send({
         email: userObject.email,
-        password: '123123'
+        password: userObject.password
       });
-
-      expect(response.status).toBe(401);
+  
+      expect(response.status).toBe(200);
+    });
   });
 
-  it('returns 404 if no user is found with given credentials', async() => {
-    const response = await request(app)
-      .post('/signin')
-      .send({
-        email: 'non-existent@email.com',
-        password: 'password'
-      });
-
-      expect(response.status).toBe(404);
+  describe('', () => {
+    it('doesn\'t authenticate with invalid credentials', async() => {
+      const response = await request(app)
+        .post('/signin')
+        .send({
+          email: userObject.email,
+          password: '123123'
+        });
+  
+        expect(response.status).toBe(401);
+    });
+  
+    it('returns 404 if no user is found with given credentials', async() => {
+      const response = await request(app)
+        .post('/signin')
+        .send({
+          email: 'non-existent@email.com',
+          password: 'password'
+        });
+  
+        expect(response.status).toBe(404);
+    });
   });
 });
