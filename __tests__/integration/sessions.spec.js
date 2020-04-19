@@ -2,8 +2,13 @@ const request = require('supertest');
 
 const app = require('../../src/app');
 const { User } = require('../../src/app/models');
+const truncate = require('../utils/truncate');
 
 describe('Authorization', () => {
+  beforeEach(async () => {
+    await truncate();
+  });
+  
   it('authenticates with valid credentials', async() => {
     const user = await User.create({
       name: 'Aline',
@@ -18,6 +23,6 @@ describe('Authorization', () => {
       email: user.email,
       password: '123456'
     });
-    expect(response.status).toBe(401);
+    expect(response.status).toBe(200);
   });
 });
