@@ -7,5 +7,6 @@ router.get('/', (request, response) => {
 });
 
 router.use('/signin', require('./signin'));
+router.use('/dashboard', require('./dashboard'));
 
 module.exports= router;
