@@ -19,5 +19,11 @@ describe('Authorization', () => {
         .set('Authorization', `Bearer: ${user.generateToken()}`);
       expect(response.status).toBe(200);
     });
+
+    it('Doesn\'t allow acces without jwt token header' , async() => {
+      const response = await request(app)
+        .get('/dashboard');
+      expect(response.status).toBe(401);
+    });
   });
 });
