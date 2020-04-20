@@ -4,14 +4,15 @@ const app = require('../../src/app');
 const factory = require('../factories');
 const truncate = require('../utils/truncate');
 
-describe('Authorization', () => {
+describe('Sessions', () => {
   let user
 
   beforeEach(async () => {
     await truncate();
     user = await factory.create('User');
   });
-  describ('Sign In', () => {
+
+  describe('Sign In', () => {
     describe('On success', () =>{
 
       it('authenticates with valid credentials', async() => {
