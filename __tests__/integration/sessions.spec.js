@@ -1,20 +1,15 @@
 const request = require('supertest');
 
 const app = require('../../src/app');
-const { User } = require('../../src/app/models');
+const factory = require('../factories');
 const truncate = require('../utils/truncate');
 
 describe('Authorization', () => {
-  let userObject = {
-    name: 'Aline',
-    email: 'aline@example.com',
-    password: 'password'
-  };
-  let user;
+  let user
 
   beforeEach(async () => {
     await truncate();
-    user = await User.create(userObject);
+    user = await factory.create('User');
   });
   describe('On success', () =>{
 
@@ -22,8 +17,8 @@ describe('Authorization', () => {
       const response = await request(app)
       .post('/signin')
       .send({
-        email: userObject.email,
-        password: userObject.password
+        email: user.email,
+        password: user.password
       });
   
       expect(response.status).toBe(200);
@@ -33,8 +28,8 @@ describe('Authorization', () => {
       const response = await request(app)
       .post('/signin')
       .send({
-        email: userObject.email,
-        password: userObject.password
+        email: user.email,
+        password: user.password
       });
 
       expect(response.body).toHaveProperty('token');
@@ -46,7 +41,7 @@ describe('Authorization', () => {
       const response = await request(app)
         .post('/signin')
         .send({
-          email: userObject.email,
+          email: user.email,
           password: '123123'
         });
   
