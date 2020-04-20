@@ -25,5 +25,12 @@ describe('Authorization', () => {
         .get('/dashboard');
       expect(response.status).toBe(401);
     });
+
+    it('Doesn\'t allow acces with invalid jwt token header' , async() => {
+      const response = await request(app)
+        .get('/dashboard')
+        .set('Authorization', `Bearer: 1234`);
+      expect(response.status).toBe(401);
+    });
   });
 });
